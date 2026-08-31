@@ -14,6 +14,6 @@ Steno works well with a reduced layout, hence it's a great fit for controllers. 
 
 The textbook, theory, and dictionaries are all still very work in progress,
 
-feel free to [support me with a donation](https://ko-fi.com/stenoharri),
+feel free to [tip me](https://ko-fi.com/stenoharri), I have lots more work to do, completing the dictionary, flesh out conflict resolution, phrasing theory, orthospelling, numbers, alternative accents, eventually new layouts for new form-factors, other languages
 
 or bug me on the [Hobby Steno Discord](https://discord.gg/0lQde43a6dGmAMp2) (@Harrri)
