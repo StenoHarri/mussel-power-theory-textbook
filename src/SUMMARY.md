@@ -7,6 +7,7 @@
 -[Chapter 5: Outer ring initials](Chapter-05.md)
 -[Chapter 6: Middle ring finals](Chapter-06.md)
 -[Chapter 7: Outer ring finals](Chapter-07.md)
+-[Chapter 8: Vowel clusters](Chapter-08.md)
 -[Full Layout](Full_Layout.md)
 -[Conflict Resolution](Conflict-Resolution.md)
 -[Briefing techniques](Briefing-Techniques.md)
