@@ -10,11 +10,21 @@ DEFAULT_FREQ = (
     ROOT.parent / "Froj" / "Froj_theories" / "Mussel_Power" / "complete_output.json"
 )
 
+DEFAULT_DICT = ROOT / "src" / "img" / "Mussel_Power_base_british_generated.json"
+
 parser = argparse.ArgumentParser(description="Generate steno practice files")
-parser.add_argument("dictionary", help="Path to the steno dictionary JSON file")
+parser.add_argument(
+    "dictionary",
+    nargs="?",
+    default=str(DEFAULT_DICT),
+    help="Path to the steno dictionary JSON file",
+)
 args = parser.parse_args()
 
-DICT_FILE = (ROOT / args.dictionary).resolve()
+DICT_FILE = Path(args.dictionary)
+if not DICT_FILE.is_absolute():
+    DICT_FILE = ROOT / DICT_FILE
+DICT_FILE = DICT_FILE.resolve()
 
 TOKEN_RE = re.compile(r"\d(?:[lrLR])?|.")
 VOWELS = set("AOEU")
