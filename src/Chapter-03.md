@@ -6,6 +6,7 @@ This practice will involve the most basic chords, to get you familiar with using
 |------|-------|-------|
 | ![left joystick](img/left_joystick_inner_pie_cropped.svg) | `A` `O` `E` `U` | ![right joystick](img/right_joystick_inner_pie_cropped.svg) |
 
+## Practice
 
 I would like you to go set up a custom Typey Type lesson, and paste in this material
 
