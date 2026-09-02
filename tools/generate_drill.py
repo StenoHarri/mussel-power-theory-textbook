@@ -11,6 +11,7 @@ DEFAULT_FREQ = (
 )
 
 DEFAULT_DICT = ROOT / "src" / "img" / "Mussel_Power_base_british_generated.json"
+SMALL_SUBSET_DICT = ROOT / "src" / "img" / "small_but_problem_free_subset.json"
 
 parser = argparse.ArgumentParser(description="Generate steno practice files")
 parser.add_argument(
@@ -76,7 +77,15 @@ def dictionary_into_longest_outlines_only(dict_file):
 
     return output_file
 
-DICT_FILE = dictionary_into_longest_outlines_only(DICT_FILE)
+
+def words_from_longest_subset(subset_file):
+    """
+    Get the words represented by the longest outlines in the small subset.
+    """
+    with open(subset_file, encoding="utf-8") as f:
+        dictionary = json.load(f)
+
+    return {str(word) for word in dictionary.values()}
 
 
 TOKEN_RE = re.compile(r"\d(?:[lrLR])?|.")
@@ -304,6 +313,24 @@ frequency = load_frequency(DEFAULT_FREQ)
 
 with open(DICT_FILE, encoding="utf-8") as f:
     dictionary = json.load(f)
+
+# Only the small problem-free subset is reduced to its longest outlines.
+LONGEST_SUBSET_FILE = dictionary_into_longest_outlines_only(
+    SMALL_SUBSET_DICT
+)
+
+eligible_words = words_from_longest_subset(LONGEST_SUBSET_FILE)
+
+dictionary = {
+    raw: word
+    for raw, word in dictionary.items()
+    if str(word) in eligible_words
+}
+
+print(
+    f"Using {len(eligible_words)} eligible words and "
+    f"{len(dictionary)} full-dictionary outlines"
+)
 
 lessons = []
 new_before = set()
