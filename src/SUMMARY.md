@@ -3,6 +3,7 @@
 -[Chapter 1: What is steno](Chapter-01.md)
 -[Chapter 2: Setting up Plover](Chapter-02.md)
 -[Chapter 3: Inner ring, simple vowels](Chapter-03.md)
+-[Chapter 4: Middle ring initials](Chapter-04.md)
 -[Full Layout](Full_Layout.md)
 -[Conflict Resolution](Conflict-Resolution.md)
 -[Briefing techniques](Briefing-Techniques.md)
