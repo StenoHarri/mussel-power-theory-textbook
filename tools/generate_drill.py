@@ -26,6 +26,59 @@ if not DICT_FILE.is_absolute():
     DICT_FILE = ROOT / DICT_FILE
 DICT_FILE = DICT_FILE.resolve()
 
+def dictionary_into_longest_outlines_only(dict_file):
+    output_file = dict_file.with_name(
+        f"{dict_file.stem}_longest_outlines_only{dict_file.suffix}"
+    )
+
+    # Don't regenerate it if it already exists.
+    if output_file.exists():
+        print(f"Using existing longest-outline dictionary: {output_file}")
+        return output_file
+
+    with open(dict_file, encoding="utf-8") as f:
+        dictionary = json.load(f)
+
+    longest = {}
+
+    for raw, word in dictionary.items():
+        word_key = str(word)
+        stroke_count = len(raw.split("/"))
+
+        current = longest.get(word_key)
+
+        if current is None:
+            longest[word_key] = [(stroke_count, raw)]
+            continue
+
+        current_length = current[0][0]
+
+        if stroke_count > current_length:
+            longest[word_key] = [(stroke_count, raw)]
+        elif stroke_count == current_length:
+            current.append((stroke_count, raw))
+
+    result = {}
+
+    for entries in longest.values():
+        for _, raw in entries:
+            result[raw] = dictionary[raw]
+
+    output_file.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    print(
+        f"Created longest-outline dictionary: "
+        f"{output_file} ({len(result)} entries)"
+    )
+
+    return output_file
+
+DICT_FILE = dictionary_into_longest_outlines_only(DICT_FILE)
+
+
 TOKEN_RE = re.compile(r"\d(?:[lrLR])?|.")
 VOWELS = set("AOEU")
 LETTER_RE = re.compile(r"[A-Za-z]")
