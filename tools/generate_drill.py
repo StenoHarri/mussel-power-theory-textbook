@@ -11,6 +11,7 @@ DEFAULT_FREQ = (
 )
 
 DEFAULT_DICT = ROOT / "src" / "img" / "Mussel_Power_base_british_generated.json"
+SMALL_SUBSET_DICT = ROOT / "src" / "img" / "small_but_problem_free_subset.json"
 
 parser = argparse.ArgumentParser(description="Generate steno practice files")
 parser.add_argument(
@@ -76,7 +77,25 @@ def dictionary_into_longest_outlines_only(dict_file):
 
     return output_file
 
-DICT_FILE = dictionary_into_longest_outlines_only(DICT_FILE)
+
+def restrict_to_longest_subset_entries(subset_file, main_dictionary):
+    with open(subset_file, encoding="utf-8") as f:
+        subset = json.load(f)
+
+    result = {
+        raw: word
+        for raw, word in main_dictionary.items()
+        if raw in subset and word == subset[raw]
+    }
+
+    print(
+        f"Longest subset entries: {len(subset)}"
+    )
+    print(
+        f"Exact entries also found in full dictionary: {len(result)}"
+    )
+
+    return result
 
 
 TOKEN_RE = re.compile(r"\d(?:[lrLR])?|.")
@@ -304,6 +323,17 @@ frequency = load_frequency(DEFAULT_FREQ)
 
 with open(DICT_FILE, encoding="utf-8") as f:
     dictionary = json.load(f)
+
+# Only filter the subset dictionary down to its longest outlines.
+LONGEST_SUBSET_FILE = dictionary_into_longest_outlines_only(
+    SMALL_SUBSET_DICT
+)
+
+# Lessons may only contain entries whose EXACT outline + word pair occurs in the longest-outline small subset.
+dictionary = restrict_to_longest_subset_entries(
+    LONGEST_SUBSET_FILE,
+    dictionary,
+)
 
 lessons = []
 new_before = set()
