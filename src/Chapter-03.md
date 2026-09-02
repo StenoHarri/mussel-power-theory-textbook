@@ -40,3 +40,5 @@ Please bare in mind this is also my first lesson 😅
     allowfullscreen>
   </iframe>
 </div>
+
+If you have any issues with the dictionary, here's what was used to generate these lessons [Mussel Power base british generated 31/08/2026](img\Mussel_Power_base_british_generated.json)
