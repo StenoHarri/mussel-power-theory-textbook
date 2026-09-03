@@ -27,41 +27,41 @@ if not DICT_FILE.is_absolute():
     DICT_FILE = ROOT / DICT_FILE
 DICT_FILE = DICT_FILE.resolve()
 
-def dictionary_into_longest_outlines_only(dict_file):
+def dictionary_into_shortest_outlines_only(dict_file):
     output_file = dict_file.with_name(
-        f"{dict_file.stem}_longest_outlines_only{dict_file.suffix}"
+        f"{dict_file.stem}_shortest_outlines_only{dict_file.suffix}"
     )
 
     # Don't regenerate it if it already exists.
     if output_file.exists():
-        print(f"Using existing longest-outline dictionary: {output_file}")
+        print(f"Using existing shortest-outline dictionary: {output_file}")
         return output_file
 
     with open(dict_file, encoding="utf-8") as f:
         dictionary = json.load(f)
 
-    longest = {}
+    shortest = {}
 
     for raw, word in dictionary.items():
         word_key = str(word)
         stroke_count = len(raw.split("/"))
 
-        current = longest.get(word_key)
+        current = shortest.get(word_key)
 
         if current is None:
-            longest[word_key] = [(stroke_count, raw)]
+            shortest[word_key] = [(stroke_count, raw)]
             continue
 
         current_length = current[0][0]
 
-        if stroke_count > current_length:
-            longest[word_key] = [(stroke_count, raw)]
+        if stroke_count < current_length:
+            shortest[word_key] = [(stroke_count, raw)]
         elif stroke_count == current_length:
             current.append((stroke_count, raw))
 
     result = {}
 
-    for entries in longest.values():
+    for entries in shortest.values():
         for _, raw in entries:
             result[raw] = dictionary[raw]
 
@@ -71,14 +71,14 @@ def dictionary_into_longest_outlines_only(dict_file):
     )
 
     print(
-        f"Created longest-outline dictionary: "
+        f"Created shortest-outline dictionary: "
         f"{output_file} ({len(result)} entries)"
     )
 
     return output_file
 
 
-def restrict_to_longest_subset_entries(subset_file, main_dictionary):
+def restrict_to_shortest_subset_entries(subset_file, main_dictionary):
     with open(subset_file, encoding="utf-8") as f:
         subset = json.load(f)
 
@@ -324,14 +324,14 @@ frequency = load_frequency(DEFAULT_FREQ)
 with open(DICT_FILE, encoding="utf-8") as f:
     dictionary = json.load(f)
 
-# Only filter the subset dictionary down to its longest outlines.
-LONGEST_SUBSET_FILE = dictionary_into_longest_outlines_only(
+# Filter the subset dictionary down to its shortest outlines.
+SHORTEST_SUBSET_FILE = dictionary_into_shortest_outlines_only(
     SMALL_SUBSET_DICT
 )
 
-# Lessons may only contain entries whose EXACT outline + word pair occurs in the longest-outline small subset.
-dictionary = restrict_to_longest_subset_entries(
-    LONGEST_SUBSET_FILE,
+# Lessons may only contain entries whose EXACT outline + word pair occurs in the shortest-outline small subset.
+dictionary = restrict_to_shortest_subset_entries(
+    SHORTEST_SUBSET_FILE,
     dictionary,
 )
 
