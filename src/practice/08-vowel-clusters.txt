@@ -837,7 +837,7 @@ filled	FEULD | 6lEU4r
 games	GAEUM/-S | 5lAEU5r/-1
 roll	ROEL | 1OE4
 spoken	SPOEK/-N | 7LOE3r/-6
-holy	HOEL/-Y | 3rOE4/-3
+holy	HOELY | 3rOE4l
 possibility	P/S/BEUL/-T/-Y | 4/7/3EU4/-7/-3
 tapes	TAEUP/-S | 8AEU5l/-1
 accounts	A/KOUNT/-S | 8l/2OU6r/-1
@@ -1011,7 +1011,6 @@ leaders	LAOED/-RS | 5AOE5/-8r
 strategic	STR/TAOEJ/-K | 7R/8AOE3L/-3r
 trial	TRAOEUL | 8rAOEU4
 placed	PLAEUSE/-D | 4rAEU1r/-5
-violence	VAOEUL/-N/-SE | 1rAOEU4/-6/-1r
 exchange	Z/CHAEUN/-J | 4R/8RAEU6/-3L
 kick	KEUK | 2EU3r
 senior	SAOEN/-R | 7AOE6/-8
@@ -2010,7 +2009,6 @@ bitch	BEUCH | 3EU2L
 weapon	WAEP/-N | 1lAE5l/-6
 woke	WOEK | 1lOE3r
 assuming	A/SHAOUM/-NG | 8l/5RAOU5r/-2
-bold	BOEL/-D | 3OE4/-5
 lit	LEUT | 5EU7
 acquired	A/KWAOEURD | 8l/2LAOEU8L
 universities	YAOUN/-V/-RSE/-T/-G | 4lAOU6/-7r/-1R/-7/-3l
@@ -2027,7 +2025,6 @@ scope	S/KOEP | 7/2OE5l
 slate	S/LAEUT | 7/5AEU7
 calculator	K/L/K/LAEUT/-R | 2/5/2/5AEU7/-8
 recycling	R/SAOEUK/-L/-NG | 1/7AOEU3r/-4/-2
-grain	G/RAEUN | 5l/1AEU6
 waves	WAEUV/-S | 1lAEU7r/-1
 blokes	BLOEK/-S | 3ROE3r/-1
 meantime	MAEN/-T/-M | 3lAE6/-7/-5r
@@ -2498,3 +2495,6 @@ chains	CHAEUNS | 8RAEU6R
 composed	KM/POES/-D | 1R/4OE1/-5
 composed	KM/POESE/-D | 1R/4OE1r/-5
 breathe	BRAETH | 3LAE7L
+breathe	BRAOETH | 3LAOE7L
+hits	HEUT/-S | 3rEU7/-1
+volunteer	V/L/N/TAOER | 1r/5/7l/8AOE8
