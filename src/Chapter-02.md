@@ -54,3 +54,7 @@ https://github.com/StenoHarri/plover_mussel_power.git
 
 ![enable](img/enable.png)
 
+##
+
+![shrimp gif](img/shrimp.gif)
+
